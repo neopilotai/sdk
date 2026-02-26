@@ -1,0 +1,55 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: latest
+      - run: corepack enable
+      - run: pnpm install
+      - run: pnpm run build:packages
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: latest
+      - run: corepack enable
+      - run: pnpm install
+      - run: pnpm run lint
+
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: latest
+      - run: corepack enable
+      - run: pnpm install
+      - run: pnpm run typecheck
+
+  publish:
+    if: github.event_name == 'pull_request'
+    needs: [build, lint, typecheck]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: latest
+      - run: corepack enable
+      - run: pnpm install
+      - run: pnpx pkg-pr-new publish --compact --no-template --pnpm './packages/repolens-ai'

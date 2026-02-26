@@ -1,0 +1,26 @@
+{
+  "name": "repolens-ai",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "turbo run build",
+    "build:docs": "pnpm --filter @repolens-ai/docs build",
+    "build:packages": "pnpm --filter @repolens-ai/sdk build",
+    "dev": "turbo run dev",
+    "docs:dev": "pnpm --filter @repolens-ai/docs dev",
+    "docs:build": "pnpm --filter @repolens-ai/docs build",
+    "docs:generate": "pnpm --filter @repolens-ai/docs generate",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "typecheck": "turbo run typecheck",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build --filter=@repolens-ai/sdk && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.5.2",
+    "@changesets/cli": "^2.29.8",
+    "turbo": "latest"
+  },
+  "packageManager": "pnpm@10.30.2"
+}
