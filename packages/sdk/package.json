@@ -1,0 +1,59 @@
+{
+  "name": "@repolens-ai/sdk",
+  "version": "1.0.0",
+  "description": "RepoLens for the Vercel AI SDK, wrap GitHub's API as AI SDK tools ready to plug into any agent",
+  "author": "NeoPilot <https://github.com/neopilotai>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/repolens-ai/sdk.git",
+    "directory": "packages/repolens-ai"
+  },
+  "homepage": "https://github.com/repolens-ai/sdk",
+  "bugs": {
+    "url": "https://github.com/repolens-ai/sdk/issues"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "ai",
+    "ai-sdk",
+    "github",
+    "tools",
+    "agent"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@octokit/rest": "^22.0.1"
+  },
+  "peerDependencies": {
+    "ai": "^6.0.97",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.13",
+    "tsdown": "^0.20.3",
+    "typescript": "^5.9.3"
+  },
+  "packageManager": "pnpm@10.30.2",
+  "publishConfig": {
+    "access": "public"
+  }
+}

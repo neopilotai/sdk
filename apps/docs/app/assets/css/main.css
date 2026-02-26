@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ui-container: 96rem;
+}
+
+:root {
+  --ui-bg: oklch(0.13 0.005 260);
+  color-scheme: dark;
+}
+
+body {
+  background: var(--ui-bg);
+}
