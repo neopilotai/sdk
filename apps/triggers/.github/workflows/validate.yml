@@ -1,0 +1,17 @@
+name: Agent
+
+on:
+  pull_request:
+    paths:
+      - '.github/triggers.yml'
+
+jobs:
+  Config:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Validate Schema
+        run: bun run .github/scripts/validate.ts

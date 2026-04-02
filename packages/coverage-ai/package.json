@@ -1,0 +1,29 @@
+{
+  "name": "@repolens-ai/coverage-ai",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "ai": "^3.4.0",
+    "fast-xml-parser": "^5.5.9",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0"
+  },
+  "peerDependencies": {
+    "@octokit/rest": "^20.0.0"
+  }
+}

@@ -7,9 +7,89 @@
 
 RepoLens for the [AI SDK](https://ai-sdk.dev) — wrap GitHub's REST API as ready-to-use tools for any agent or `generateText` / `streamText` call.
 
-18 tools covering repositories, pull requests, issues, commits, and search. Write operations support granular approval control out of the box.
+Also includes **AI-powered PR tools** (PR-Insight) — code reviews, descriptions, improvements, questions, and more!
+
+## Two Ways to Use
+
+### 1. Basic GitHub Tools (Repository, PRs, Issues, Search)
+### 2. AI-Powered PR Tools (Review, Describe, Improve, Ask)
 
 ## Installation
+
+```sh
+pnpm add @repolens-ai/sdk ai zod @octokit/rest
+```
+
+## AI-Powered PR Tools
+
+### Quick Start
+
+```ts
+import { createRepoLensClient, createAllTools } from '@repolens-ai/sdk'
+
+// Client usage
+const client = createRepoLensClient({
+  token: process.env.GITHUB_TOKEN!,
+  apiKey: process.env.OPENAI_KEY!,
+})
+
+// Review a PR
+const review = await client.reviewPullRequest(
+  'https://github.com/owner/repo/pull/123',
+  { publishComment: true }
+)
+
+// Describe a PR  
+const desc = await client.describePullRequest(
+  'https://github.com/owner/repo/pull/123'
+)
+
+// Improve code
+const improvements = await client.improvePullRequest(
+  'https://github.com/owner/repo/pull/123',
+  { createBranch: true }
+)
+
+// Ask about code
+const answer = await client.askQuestion(
+  'https://github.com/owner/repo/pull/123',
+  'What does this function do?'
+)
+```
+
+### Using with Vercel AI SDK
+
+```ts
+import { createAllTools } from '@repolens-ai/sdk'
+
+const tools = createAllTools({
+  token: process.env.GITHUB_TOKEN!,
+  model: 'anthropic/claude-sonnet-4.6',
+  apiKey: process.env.ANTHROPIC_API_KEY!,
+})
+
+const agent = new ToolLoopAgent({
+  model: 'anthropic/claude-3-5-sonnet-20241022',
+  tools,
+})
+
+const result = await agent.generate({
+  prompt: 'Review PR https://github.com/owner/repo/pull/123',
+})
+```
+
+### Available AI Tools
+
+| Tool | Description |
+|------|-------------|
+| `/review` | AI code review with security analysis |
+| `/describe` | Generate PR title and description |
+| `/improve` | Get code improvement suggestions |
+| `/ask` | Ask questions about code |
+| `/labels` | Generate PR labels |
+| `/changelog` | Update CHANGELOG.md |
+
+## Basic GitHub Tools (Repository, PRs, Issues)
 
 ```sh
 pnpm add @repolens-ai/sdk

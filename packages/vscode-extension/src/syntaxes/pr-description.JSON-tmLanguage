@@ -1,0 +1,33 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "PR Description",
+  "patterns": [
+    { "include": "#headings" },
+    { "include": "#lists" },
+    { "include": "#code" },
+    { "include": "#comments" }
+  ],
+  "repository": {
+    "headings": {
+      "patterns": [
+        { "match": "^#{1,6}\\s.*$", "name": "markup.heading.pr-description" }
+      ]
+    },
+    "lists": {
+      "patterns": [
+        { "match": "^\\s*[-*+]\\s.*$", "name": "markup.list.pr-description" }
+      ]
+    },
+    "code": {
+      "patterns": [
+        { "begin": "```", "end": "```", "name": "markup.code.pr-description" }
+      ]
+    },
+    "comments": {
+      "patterns": [
+        { "match": "<!--[\\s\\S]*?-->", "name": "comment.pr-description" }
+      ]
+    }
+  },
+  "scopeName": "text.md.pr-description"
+}

@@ -12,6 +12,7 @@
     "docs:generate": "turbo --filter @repolens-ai/docs generate",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
+    "test": "turbo run test",
     "typecheck": "turbo run typecheck",
     "changeset": "changeset",
     "version-packages": "changeset version",
@@ -20,7 +21,11 @@
   "devDependencies": {
     "@changesets/changelog-github": "^0.5.2",
     "@changesets/cli": "^2.29.8",
-    "turbo": "latest"
+    "turbo": "latest",
+    "vitest": "^2.1.8"
   },
-  "packageManager": "pnpm@10.30.2"
+  "packageManager": "pnpm@10.30.2",
+  "dependencies": {
+    "tailwindcss": "^4.2.2"
+  }
 }

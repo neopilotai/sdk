@@ -1,0 +1,36 @@
+{
+  "name": "@repolens-ai/code-editor",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "@monaco-editor/react": "^4.6.0",
+    "monaco-editor": "^0.50.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "typescript": "^5.5.0"
+  },
+  "dependencies": {
+    "ai": "^3.4.0",
+    "zod": "^3.23.0"
+  }
+}
